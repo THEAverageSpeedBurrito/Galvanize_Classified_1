@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "knex": "knex",
-    "heroku-postbuild": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest && knex seed:run",
     "start": "node server.js"
   },
   "engines": {

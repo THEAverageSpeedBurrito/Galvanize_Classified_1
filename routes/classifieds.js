@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
     data.forEach((obj) => {
       delete obj.created_at;
       delete obj.updated_at;
-    })
+    });
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data);
   });
 });
@@ -24,6 +25,7 @@ router.get('/:id', (req, res) => {
   .then((data) => {
     delete data[0].created_at;
     delete data[0].updated_at;
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data[0]);
   })
 })
@@ -42,6 +44,7 @@ router.post('/', (req, res) => {
   .then((data) => {
     delete data[0].created_at;
     delete data[0].updated_at;
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data[0]);
   });
 });
@@ -60,6 +63,7 @@ router.patch('/:id', (req, res) => {
   .then((data) => {
     delete data[0].created_at;
     delete data[0].updated_at;
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data[0]);
   });
 });
@@ -73,6 +77,7 @@ router.delete('/:id', (req, res) => {
     knex('classifieds')
     .del()
     .where('id', req.params.id);
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data[0]);
   })
 })
