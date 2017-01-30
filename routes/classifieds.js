@@ -28,4 +28,35 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.post('/', (req, res) => {
+  var {title, price, description, item_image} = req.body;
+  var newPost = {
+    title,
+    price,
+    description,
+    item_image,
+  };
+
+  knex('classifieds')
+  .insert(newPost, '*')
+  .then((data) => {
+    delete data[0].created_at;
+    delete data[0].updated_at;
+    res.send(data[0]);
+  });
+})
+
+router.delete('/:id', (req, res) => {
+  knex('classifieds')
+  .where('id', req.params.id)
+  .then((data) => {
+    delete data[0].created_at;
+    delete data[0].updated_at;
+    knex('classifieds')
+    .del()
+    .where('id', req.params.id);
+    res.send(data[0]);
+  })
+})
+
 module.exports = router;
