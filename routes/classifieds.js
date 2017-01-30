@@ -18,4 +18,14 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  knex('classifieds')
+  .where('id', req.params.id)
+  .then((data) => {
+    delete data[0].created_at;
+    delete data[0].updated_at;
+    res.send(data[0]);
+  })
+})
+
 module.exports = router;
