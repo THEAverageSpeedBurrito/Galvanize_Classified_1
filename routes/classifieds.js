@@ -77,7 +77,7 @@ router.delete('/:id', (req, res) => {
     knex('classifieds')
     .del()
     .where('id', req.params.id);
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', '*');atom .
     res.send(data[0]);
   })
 })
