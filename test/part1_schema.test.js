@@ -24,10 +24,10 @@ suite('Part 1: Schema for classifieds should be built.', () => {
       .then((actual) => {
         const expected = {
           id: {
+            defaultValue: "nextval('classifieds_id_seq'::regclass)",
             type: 'integer',
             maxLength: null,
             nullable: false,
-            defaultValue: 'nextval(\'classifieds_id_seq\'::regclass)'
           },
 
           title: {

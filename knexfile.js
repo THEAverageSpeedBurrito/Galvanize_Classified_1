@@ -2,8 +2,16 @@
 
 module.exports = {
 
-  development: { },
-  test: { },
-  production: { },
-
+  development: {
+    client: 'pg',
+    connection: 'postgres://localhost/development'
+  },
+  test: {
+    client: 'pg',
+    connection: 'postgres://localhost/test'
+  },
+  production: {
+    client: 'pg',
+    connection: 'postgres://localhost/other'
+  },
 };
