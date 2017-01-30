@@ -44,7 +44,25 @@ router.post('/', (req, res) => {
     delete data[0].updated_at;
     res.send(data[0]);
   });
-})
+});
+
+router.patch('/:id', (req, res) => {
+  var {title, price, description, item_image} = req.body;
+
+  knex('classifieds')
+  .where('id', req.params.id)
+  .update({
+    title,
+    price,
+    description,
+    item_image
+  }, '*')
+  .then((data) => {
+    delete data[0].created_at;
+    delete data[0].updated_at;
+    res.send(data[0]);
+  });
+});
 
 router.delete('/:id', (req, res) => {
   knex('classifieds')
