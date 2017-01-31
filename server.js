@@ -6,14 +6,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const messages = require('./routes/classifieds');
-var allowCrossDomain = function (req, res, next) {
-  res.header('Allow-Control-Allow-Origin', '*');
-  res.header('Allow-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Allow-Control-Allow-Headers', 'Content-Type');
-  next();
-};
+const cors = require('cors');
 
-app.use(allowCrossDomain);
+app.use(cors());
 app.use('/classifieds', messages);
 
 const port = process.env.PORT || 3000;
