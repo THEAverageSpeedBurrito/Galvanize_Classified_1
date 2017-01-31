@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
   .orderBy('id')
   .then((data) => {
     data.forEach((obj) => {
-      delete obj.created_at;
       delete obj.updated_at;
     });
     res.header('Access-Control-Allow-Origin', '*');
